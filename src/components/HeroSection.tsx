@@ -64,10 +64,11 @@ const HeroSection = () => {
           </button>
               </Link>
             </nav>
-
-          <button className="border border-cyan-400 px-6 py-3 rounded-xl hover:bg-cyan-400/10 transition">
-            Ver soluciones
-          </button>
+            <Link to="/nosotros" className={("/contacto")}>
+            <button className="border border-cyan-400 px-6 py-3 rounded-xl hover:bg-cyan-400/10 transition">
+              soluciones
+            </button>
+            </Link>
         </div>
       </div>
     </section>

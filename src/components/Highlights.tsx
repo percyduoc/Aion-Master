@@ -4,17 +4,17 @@ const cards = [
   {
     title: "Notificaciones de eventos críticos",
     desc: "Alertas instantáneas para respuestas rápidas y efectivas.",
-    img: "src/assets/img/Alerta.avif",
+    img: "https://i.postimg.cc/QxXVg4SF/Alerta.avif",
   },
   {
     title: "Monitoreo Ias 24/7",
     desc: "Vigilancia continua con tecnología de inteligencia artificial.",
-    img: "src/assets/img/monitoreo.webp",
+    img: "https://i.postimg.cc/8Pq9Q33g/monitoreo.webp",
   },
   {
     title: "Control total desde tu celular",
     desc: "Accede a tus cámaras y sistemas desde cualquier lugar en tiempo real .",
-    img: "src/assets/img/celular_camara.png",
+    img: "https://i.postimg.cc/mg9xPRMm/celular-camara.png",
   },
 ];
 

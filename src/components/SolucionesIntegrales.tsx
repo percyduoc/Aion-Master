@@ -46,7 +46,7 @@ const SolucionesIntegrales = () => {
           className="relative"
         >
           <img
-            src="src/assets/img/Foto.png"
+            src="https://i.postimg.cc/V6V490Pw/Foto.png"
             alt="Soluciones de seguridad"
             className="rounded-2xl shadow-xl"
           />
