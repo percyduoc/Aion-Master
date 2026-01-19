@@ -27,7 +27,7 @@ const Header = () => {
             </nav>
 
             {/* Logo center */}
-            <div className="flex justify-center">
+            <div className="flex justify-center logo-fixed">
               <Link to="/">
                 <img
                   src={LogoPark}

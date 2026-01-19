@@ -73,3 +73,24 @@ body {
     background-clip: text;
   }
 }
+
+
+
+
+@media (max-width: 768px) {
+  .logo-fixed {
+    position: absolute;
+    top: 20%;   
+    left: 50%;  
+    transform: translate(-50%, -20%);
+  }
+}
+
+@media (max-width: 480px) {
+  .logo-fixed {
+    position: absolute;
+    top: 10%;  
+    left: 82%;  
+    transform: translate(-80%, -10%);
+  }
+}
