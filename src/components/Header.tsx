@@ -17,7 +17,7 @@ const Header = () => {
       <div className=" backdrop-blur-md">
         <div className="max-w-7xl mx-auto px-1">
           <div className="grid grid-cols-3 items-center h-24">
-            <nav className="flex gap-10">
+            <nav className="flex gap-5">
               <Link to="/" className={linkClass("/")}>
                 Inicio
               </Link>
@@ -27,7 +27,7 @@ const Header = () => {
             </nav>
 
             {/* Logo center */}
-            <div className="flex justify-center logo-fixed">
+            <div className="flex justify-center">
               <Link to="/">
                 <img
                   src={LogoPark}
@@ -38,7 +38,7 @@ const Header = () => {
             </div>
 
             {/* Right menu */}
-            <nav className="flex justify-end gap-10">
+            <nav className="flex menu1 gap-10">
               <Link to="/contacto" className={linkClass("/contacto")}>
                 Contacto
               </Link>

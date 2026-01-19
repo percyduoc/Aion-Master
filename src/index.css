@@ -72,6 +72,11 @@ body {
     -webkit-text-fill-color: transparent;
     background-clip: text;
   }
+  .menu1{
+    justify-content: end;
+
+
+  }
 }
 
 
@@ -84,6 +89,12 @@ body {
     left: 50%;  
     transform: translate(-50%, -20%);
   }
+  .menu1{
+    justify-content: center;
+
+
+  }
+
 }
 
 @media (max-width: 480px) {
@@ -92,5 +103,10 @@ body {
     top: 10%;  
     left: 82%;  
     transform: translate(-80%, -10%);
+  }
+  .menu1{
+    justify-content: center;
+
+
   }
 }
