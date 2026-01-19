@@ -127,9 +127,7 @@ const Nosotros = () => {
                 className="bg-white rounded-xl p-8 shadow-lg border border-sky-100 text-center"
               >
                 <div className="relative mb-6 flex justify-center">
-                  <span className="absolute -top-3 -left-3 w-8 h-8 bg-cyan-500 text-white rounded-full flex items-center justify-center font-bold">
-                    {item.number}
-                  </span>
+                 
 
                   <motion.div
                     animate={{ y: [0, -6, 0] }}

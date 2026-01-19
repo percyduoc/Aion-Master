@@ -47,17 +47,17 @@ const Camaras = () => {
               {
                 title: 'Pack Hogar',
                 desc: 'Ideal para casas y departamentos',
-                items: ['4 cámaras HD / IP', 'NVR con grabación', 'Instalación profesional', 'Acceso desde celular'],
+                items: ['4 Cámaras IA full HD+4k', 'Base de datos de grabación', 'Instalación profesional', 'Visualización movil'],
               },
               {
                 title: 'Pack Pyme',
                 desc: 'Para locales y oficinas',
-                items: ['8 cámaras HD / IP', 'NVR + disco', 'Instalación y configuración', 'Monitoreo remoto'],
+                items: ['8 Cámaras IA full HD+4k', 'Base de datos de grabación', 'Instalación y configuración', 'Visualización movil '],
               },
               {
                 title: 'Pack Empresa',
                 desc: 'Seguridad a gran escala',
-                items: ['16+ cámaras', 'NVR profesional', 'Diseño personalizado', 'Soporte técnico'],
+                items: ['16+ Cámaras IA full HD+4k ', 'Base de datos de grabación', 'Diseño personalizado', 'Monitoreo remoto asistido' ,],
               },
             ].map((pack, i) => (
               <motion.div
@@ -101,21 +101,21 @@ const Camaras = () => {
             {[
               {
                 title: 'Plan Basico',
-                price: 'Desde $12.990 / mes',
+                price: 'Desde $18.990 / mes',
                 highlight: true,
                 items: [
-                  '1 cámara de seguridad',
-                  'Grabación en NVR',
-                  'Monitoreo desde celular',
+                  '1 cámara IA full HD+4k',
+                  'Base de datos de grabación',
+                  'Visualización movil',
                   'Botón de pánico',
                   'Soporte técnico',
                 ],
               },
               {
                 title: 'Plan Mediano',
-                price: 'Desde $24.990 / mes',
+                price: 'Desde $28.990 / mes',
                 items: [
-                  '2–4 cámaras',
+                  '2–4 cámaras IA full HD+4k',
                   'Grabación continua',
                   'Alertas',
                   'Acceso remoto',
@@ -126,7 +126,7 @@ const Camaras = () => {
                 title: 'Plan Pemium',
                 price: 'Cotización personalizada',
                 items: [
-                  '4+ cámaras',
+                  '4+ cámaras IA full HD+4k',
                   'Monitoreo avanzado',
                   'Accesos múltiples',
                   'Soporte dedicado',
