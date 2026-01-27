@@ -15,31 +15,47 @@ const Contacto = () => {
   // FORM STATE
   const [nombre, setNombre] = useState("");
   const [telefono, setTelefono] = useState("");
+  const [email, setEmail] = useState("");
   const [mensaje, setMensaje] = useState("");
+  const [emailError, setEmailError] = useState("");
+
+  const validarEmail = (value: string) => {
+    const regex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    return regex.test(value);
+  };
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
 
-    if (!nombre || !telefono || !mensaje) {
+    if (!nombre || !telefono || !email || !mensaje) {
       alert("Por favor completa todos los campos");
       return;
     }
 
-    const texto = `
-Hola, quiero una cotización 
+    if (!validarEmail(email)) {
+      setEmailError("Ingresa un correo válido");
+      return;
+    }
 
- Nombre: ${nombre}
- Teléfono: ${telefono}
- Servicio:
+    setEmailError("");
+
+    const texto = `
+Hola, quiero una asesoría técnica 👋
+
+Nombre: ${nombre}
+Correo: ${email}
+Teléfono: ${telefono}
+
+Necesidad:
 ${mensaje}
 `;
 
     const url = `https://wa.me/56950909031?text=${encodeURIComponent(texto)}`;
     window.open(url, "_blank");
 
-    // Limpia el formulario
     setNombre("");
     setTelefono("");
+    setEmail("");
     setMensaje("");
   };
 
@@ -76,9 +92,12 @@ ${mensaje}
         className="max-w-4xl mx-auto px-4 -mt-20"
       >
         <div className="bg-white mt-52 rounded-2xl shadow-xl p-8 md:p-12">
-          <h2 className="text-2xl md:text-3xl font-bold text-[#022E46] mb-6 text-center">
-            Solicita tu cotización
+          <h2 className="text-2xl md:text-3xl font-bold text-[#022E46] text-center mb-2">
+            Solicita tu asesoría técnica
           </h2>
+          <p className="text-center text-gray-500 mb-8">
+            Un especialista te orientará según tu necesidad real.
+          </p>
 
           <form
             onSubmit={handleSubmit}
@@ -89,30 +108,46 @@ ${mensaje}
               placeholder="Nombre"
               value={nombre}
               onChange={(e) => setNombre(e.target.value)}
-              className="border rounded-lg px-4 py-3 focus:ring-2 focus:ring-[#006699] outline-none"
+              className="border rounded-lg px-4 py-3 focus:ring-2 focus:ring-cyan-500 outline-none"
             />
+
+            <input
+              type="email"
+              placeholder="Correo electrónico"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+              className={`border rounded-lg px-4 py-3 focus:ring-2 outline-none ${
+                emailError
+                  ? "border-red-500 focus:ring-red-400"
+                  : "focus:ring-cyan-500"
+              }`}
+            />
+
+            {emailError && (
+              <p className="text-sm text-red-500 -mt-4">{emailError}</p>
+            )}
 
             <input
               type="tel"
               placeholder="Teléfono / WhatsApp"
               value={telefono}
               onChange={(e) => setTelefono(e.target.value)}
-              className="border rounded-lg px-4 py-3 focus:ring-2 focus:ring-[#006699] outline-none"
+              className="border rounded-lg px-4 py-3 focus:ring-2 focus:ring-cyan-500 outline-none"
             />
 
             <textarea
               rows={4}
-              placeholder="¿Qué necesitas? (cámaras, WiFi, redes, etc.)"
+              placeholder="Cuéntanos qué necesitas (cámaras, WiFi, accesos, etc.)"
               value={mensaje}
               onChange={(e) => setMensaje(e.target.value)}
-              className="border rounded-lg px-4 py-3 resize-none focus:ring-2 focus:ring-[#006699] outline-none"
+              className="border rounded-lg px-4 py-3 resize-none focus:ring-2 focus:ring-cyan-500 outline-none"
             />
 
             <button
               type="submit"
-              className="bg-[#006699] hover:bg-[#00557a] text-white font-semibold py-3 rounded-lg transition"
+              className="bg-cyan-500 hover:bg-cyan-400 text-black font-semibold py-3 rounded-lg transition"
             >
-              Enviar solicitud
+              Solicitar asesoría
             </button>
           </form>
 
@@ -155,7 +190,7 @@ ${mensaje}
                 Atención directa
               </h3>
               <p className="text-gray-600 text-sm">
-                Te atiende un especialista real desde la cotización
+                Te atiende un especialista real desde la asesoría
                 hasta la instalación.
               </p>
             </div>
@@ -181,7 +216,7 @@ ${mensaje}
                 Canales claros
               </h3>
               <p className="text-gray-600 text-sm">
-                WhatsApp para urgencias y correo para cotizaciones
+                WhatsApp para urgencias y correo para asesorías
                 formales.
               </p>
             </div>

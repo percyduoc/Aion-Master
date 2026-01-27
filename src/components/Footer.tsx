@@ -7,6 +7,7 @@ import WhatsappIcon from '../assets/svg/whatsapp-logo.svg';
 import Cisco from '../assets/brands/Cisco.png';
 import TpLink from '../assets/brands/TPLINK.png';
 import Hikvision from '../assets/brands/Hikvision.png';
+import Ubiquiti from '../assets/brands/Ubiquiti_Logo.png';
 
 import Dahua from '../assets/brands/Dahua.png';
 
@@ -50,8 +51,8 @@ const Footer = () => {
         <div className="space-y-3 text-sm">
           <h4 className="font-semibold text-gray-900">Servicios</h4>
           <ul className="space-y-1 text-gray-600">
-            <li>• Cámaras CCTV / IP</li>
-            <li>• Monitoreo y grabación NVR</li>
+            <li>• Cámaras CCTV / IP / IA</li>
+            <li>• Monitoreo y grabación</li>
             <li>• Redes cableadas y WiFi</li>
             <li>• VPN y acceso remoto</li>
             <li>• Soporte técnico</li>
@@ -71,8 +72,21 @@ const Footer = () => {
           <img src={TpLink} alt="TP-Link" className="mx-auto h-10  transition" />
           <img src={Hikvision} alt="Hikvision" className="mx-auto h-10  transition" />
           <img src={Dahua} alt="Dahua" className="mx-auto h-10  transition" />
+          {/* ubiqui */}
+          <img src={Ubiquiti} alt="Ubiquiti" className="mx-auto h-10  transition" />
         </div>
       </div>
+   
+      <div className="bg-gray-50 border-t border-gray-200 py-8">
+        <p className="max-w-4xl mx-auto px-6 text-center text-base text-gray-700">
+          En Aion priorizamos decisiones correctas por sobre ventas rápidas.
+          <br />
+          <span className="font-semibold text-gray-800">
+            Esta es la solución que necesitas, incluso si decides no hacerla con nosotros.
+          </span>
+        </p>
+      </div>
+
 
       {/* COPYRIGHT */}
       <div className="bg-gray-100 py-4 text-center text-sm text-gray-500">

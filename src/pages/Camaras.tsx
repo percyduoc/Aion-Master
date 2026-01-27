@@ -38,9 +38,16 @@ const Camaras = () => {
           viewport={{ once: true }}
           className="mb-24"
         >
-          <h3 className="text-2xl md:text-4xl font-bold text-center text-[#022E46] mb-12">
-            Packs de Instalación
-          </h3>
+       <h3 className="text-2xl md:text-4xl font-bold text-center text-[#022E46] mb-4">
+  Packs de Instalación
+</h3>
+
+<div className="flex justify-center mb-12">
+  <span className="bg-[#E6F4FA] text-[#0177A3] px-4 py-2 rounded-full text-sm md:text-base font-semibold">
+     3 meses de monitoreo gratis en todos los packs
+  </span>
+</div>
+
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             {[

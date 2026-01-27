@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import AnimatedBackground from "../components/ui/AnimatedBackground";
 import { Link } from "react-router-dom";
+import Text from "../components/text";
 
 const slides = [
   "Integramos cámaras con IA para anticipar problemas y optimizar tu infraestructura",
@@ -35,8 +36,10 @@ const HeroSection = () => {
         {/* Título fijo */}
         <h1 className="text-4xl md:text-6xl font-bold mb-6">
         Seguridad y conectividad inteligente
-          <br />
-          con  <span className="text-cyan-400"> IA aplicada</span>
+          
+          con  <span className="text-cyan-400"><Text/></span>
+          
+          
         </h1>
 
         {/* Slider */}
@@ -55,8 +58,8 @@ const HeroSection = () => {
           </AnimatePresence>
         </div>
 
-        {/* CTA opcional */}
-        <div className="mt-10 flex gap-4">
+        
+        <div className="mt-11 flex gap-4">
         <nav className="flex justify-end gap-10">
               <Link to="/contacto" className={("/contacto")}>
               <button className="border border-cyan-400 px-6 py-3 rounded-xl hover:bg-cyan-400/10 transition">

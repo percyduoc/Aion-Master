@@ -26,7 +26,7 @@ const Nosotros = () => {
   const pilares = [
     {
       icon: Evaluando,
-      title: "DISEÑO ANTES DE INSTALAR",
+      title: "DISEÑO GRATIS Y PERSONALIZADO",
       description:
         "Planificamos cada proyecto con un diseño técnico previo, asegurando eficiencia y resultados óptimos.",
       number: "1",
@@ -40,19 +40,64 @@ const Nosotros = () => {
     },
     {
       icon: apoyo,
-      title: "SEGURIDAD PENSADA PARA PERSONAS",
+      title: "SEGURIDAD PENSADA PARA TU FAMILIA O EMPRESA",
       description:
         "No solo grabamos, diseñamos sistemas que protegen y cuidan a quienes más importan.",
       number: "3",
     },
     {
       icon: apoyo,
-      title: "SOPORTE CUANDO REALMENTE SE NECESITA",
+      title: "SOPORTE Y MONITOREO GRATUITO ",
       description:
         "Nuestro equipo responde rápido y con soluciones reales, justo en el momento que lo requieres.",
       number: "4",
     },
   ];
+  const proyectos = [
+    {
+      title: "Hogar protegido 24/7",
+      subtitle: "Cámaras IP + acceso remoto",
+      image: "https://i.postimg.cc/mrYQ8m44/Disen-o-sin-ti-tulo-2.png",
+      badge: "Residencial",
+      description:
+        "Sistema de cámaras IP con IA y acceso desde el móvil.",
+      detalles: [
+        "Cámaras IP Full HD",
+        "Acceso remoto cifrado",
+        "Grabación local",
+        "Notificaciones por eventos",
+      ],
+    },
+    {
+      title: "Pyme con control de accesos",
+      subtitle: "Seguridad y trazabilidad",
+      image: "https://j3g.com.mx/wp-content/uploads/2020/11/CONTROL-DE-ACCESO-BLOG-2-1024x576.png",
+      badge: "Empresa",
+      description:
+        "Control de accesos y monitoreo para operación diaria y prevención de incidentes.",
+      detalles: [
+        "Control biométrico",
+        "Registro de accesos",
+        "Cámaras perimetrales",
+        "Soporte técnico continuo",
+      ],
+    },
+    {
+      title: "Infraestructura corporativa",
+      subtitle: "Escalable y documentada",
+      image: "https://i.postimg.cc/L5p84F0n/Disen-o-sin-ti-tulo-3.png",
+      badge: "Corporativo",
+      description:
+        "Diseño técnico avanzado orientado a crecimiento y continuidad operativa.",
+      detalles: [
+        "Diseño de red",
+        "acceso remoto",
+        "Documentación técnica",
+        "Soporte prioritario",
+      ],
+    },
+  ];
+  
 
   /* -------- INSIGNIAS -------- */
   const planes = [
@@ -153,62 +198,125 @@ const Nosotros = () => {
           </div>
         </div>
       </motion.section>
+      {/* ---------------- NUESTRA HISTORIA ---------------- */}
+<motion.section
+  initial="hidden"
+  whileInView="visible"
+  variants={container}
+  className="py-24 bg-white"
+>
+  <div className="max-w-6xl mx-auto px-6 grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
+    
+    {/* TEXTO */}
+    <motion.div variants={fadeInUp}>
+      <h2 className="text-3xl md:text-4xl font-extrabold text-[#063B55] mb-6">
+        Nuestra historia
+      </h2>
 
-      {/* ---------------- VERSIONES ---------------- */}
+      <p className="text-gray-600 mb-5 leading-relaxed">
+        AION nace desde la experiencia real en terreno. 
+        De ver instalaciones mal pensadas, equipos mal configurados
+        y clientes que quedaban solos después de pagar.
+      </p>
+
+      <p className="text-gray-600 mb-5 leading-relaxed">
+        Decidimos hacer las cosas distinto:{" "}
+        <span className="font-semibold text-[#063B55]">
+          diseñar bien desde el inicio, instalar con criterio técnico y acompañar después.
+        </span>
+      </p>
+
+      <p className="text-gray-600 leading-relaxed">
+        Somos ingenieros y técnicos que Construimos sistemas de seguridad y conectividad
+        pensados para durar y crecer contigo.
+      </p>
+    </motion.div>
+
+    {/* BLOQUE AION */}
+    <motion.div
+      variants={fadeInUp}
+      className="relative bg-gradient-to-br from-cyan-500 to-blue-700 rounded-2xl p-10 text-white shadow-xl"
+    >
+      <h3 className="text-2xl font-extrabold mb-4 flex items-center gap-2">
+        ¿Qué es AION?
+        <Sparkles className="w-6 h-6 text-yellow-300" />
+      </h3>
+
+      <p className="opacity-95 leading-relaxed mb-4">
+        AION representa visión a largo plazo.
+        Pensar la seguridad no como un gasto puntual,
+        sino como una inversión continua.
+      </p>
+
+      <p className="opacity-95 leading-relaxed">
+        Tranquilidad, control y confianza para personas,
+        hogares y empresas.
+      </p>
+    </motion.div>
+
+  </div>
+</motion.section>
+
+
+      {/* ---------------- SOLUCIONES EN TERRENO ---------------- */}
       <motion.section
         initial="hidden"
         whileInView="visible"
         variants={container}
-        className="pb-20"
+        className="pb-24"
       >
         <div className="max-w-6xl mx-auto px-6">
-          <motion.div variants={fadeInUp} className="text-center mb-12">
-            <h2 className="text-3xl font-extrabold text-[#063B55]">
-              Niveles de servicio
+          <motion.div variants={fadeInUp} className="text-center mb-14">
+            <h2 className="text-3xl md:text-4xl font-extrabold text-[#063B55]">
+              Nuestras soluciones
             </h2>
+            <p className="mt-4 max-w-3xl mx-auto text-gray-600">
+              Diseñamos soluciones reales,
+              pensadas para funcionar hoy y crecer mañana.
+            </p>
+            <div className="w-20 h-1 bg-cyan-500 mx-auto mt-6" />
           </motion.div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-            {planes.map((p, i) => (
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+            {proyectos.map((p, i) => (
               <motion.div
                 key={i}
                 variants={fadeInUp}
-                whileHover={{ scale: 1.05 }}
-                className={`relative bg-white rounded-xl shadow-xl p-10 border ${
-                  p.highlight
-                    ? "border-cyan-400 ring-2 ring-cyan-300"
-                    : ""
-                }`}
+                whileHover={{ scale: 1.04 }}
+                className="bg-white rounded-xl shadow-lg overflow-hidden border border-sky-100"
               >
-                {p.highlight && (
-                  <motion.div
-                    animate={{ opacity: [0.2, 0.5, 0.2] }}
-                    transition={{ duration: 3, repeat: Infinity }}
-                    className="absolute inset-0 rounded-xl bg-gradient-to-r from-transparent via-cyan-200/40 to-transparent pointer-events-none"
+                <div className="relative">
+                  <img
+                    src={p.image}
+                    alt=""
+                    className="h-48 w-full object-cover brightness-75"
                   />
-                )}
-
-                <div
-                  className={`mx-auto mb-6 w-28 h-28 rounded-full bg-gradient-to-br ${p.color} flex items-center justify-center text-white font-extrabold text-xl relative`}
-                >
-                  {p.highlight && (
-                    <Sparkles className="absolute -top-4 -right-4 w-6 h-6 text-yellow-300" />
-                  )}
-                  {p.tier}
+                  <span className="absolute top-4 left-4 bg-cyan-500 text-black text-xs font-semibold px-3 py-1 rounded-full">
+                    {p.badge}
+                  </span>
                 </div>
 
-                <p className="text-center text-sm text-gray-500 mb-6">
-                  {p.subtitle}
-                </p>
+                <div className="p-6">
+                  <h3 className="text-lg font-bold text-[#063B55]">
+                    {p.title}
+                  </h3>
+                  <p className="text-sm text-cyan-600 font-medium mb-3">
+                    {p.subtitle}
+                  </p>
 
-                <ul className="space-y-3 text-gray-700 text-sm">
-                  {p.items.map((item, idx) => (
-                    <li key={idx} className="flex items-center gap-2">
-                      <ShieldCheck className="w-4 h-4 text-cyan-500" />
-                      {item}
-                    </li>
-                  ))}
-                </ul>
+                  <p className="text-sm text-gray-600 mb-4">
+                    {p.description}
+                  </p>
+
+                  <ul className="space-y-2 text-sm text-gray-700">
+                    {p.detalles.map((d, idx) => (
+                      <li key={idx} className="flex items-center gap-2">
+                        <ShieldCheck className="w-4 h-4 text-cyan-500" />
+                        {d}
+                      </li>
+                    ))}
+                  </ul>
+                </div>
               </motion.div>
             ))}
           </div>
@@ -218,7 +326,7 @@ const Nosotros = () => {
               onClick={() => navigate("/contacto")}
               className="bg-cyan-500 hover:bg-cyan-400 text-black px-10 py-4 rounded-full font-semibold transition"
             >
-              Solicitar evaluación técnica →
+              Solicitar evaluación técnica<span> Gratis</span>
             </button>
           </motion.div>
         </div>
