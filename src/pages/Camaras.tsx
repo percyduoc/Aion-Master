@@ -85,7 +85,7 @@ const Camaras = () => {
                   rel="noopener noreferrer"
                   className="block text-center bg-[#022E46] text-white py-3 rounded-lg font-semibold hover:bg-[#014d72] transition"
                 >
-                  Cotizar Pack
+                  Asesorar Pack
                 </a>
               </motion.div>
             ))}
@@ -131,7 +131,7 @@ const Camaras = () => {
               },
               {
                 title: 'Plan Pemium',
-                price: 'Cotización personalizada',
+                price: 'asesoría personalizada',
                 items: [
                   '4+ cámaras IA full HD+4k',
                   'Monitoreo avanzado',

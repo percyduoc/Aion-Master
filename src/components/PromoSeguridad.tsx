@@ -57,7 +57,7 @@ const PromoSeguridad = () => {
               rel="noopener noreferrer"
               className="bg-cyan-500 hover:bg-cyan-400 text-black px-8 py-3 rounded-xl font-semibold transition text-center"
             >
-              Cotizar ahora
+              Asesorar ahora
             </a>
 
             <a
