@@ -21,7 +21,7 @@ const Camaras = () => {
           className="text-center mb-20"
         >
           <h2 className="text-3xl md:text-5xl font-extrabold text-[#022E46] mb-6">
-            Soluciones de Cámaras de Seguridad
+           Cámaras de Seguridad
           </h2>
           <p className="text-lg md:text-xl text-gray-600 max-w-3xl mx-auto">
             Protege tu hogar o negocio con cámaras profesionales, instalación certificada
