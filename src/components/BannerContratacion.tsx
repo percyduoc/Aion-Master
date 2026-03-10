@@ -35,7 +35,7 @@ const BannerContratacion = () => {
             <span className="text-white/80 flex items-center">
               o llámanos al
               <strong className="ml-2 text-xl text-white">
-                +56 9 5090 9031
+                +56 9 4715 3763
               </strong>
             </span>
           </div>
