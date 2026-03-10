@@ -25,7 +25,7 @@ const BannerContratacion = () => {
 
           <div className="flex flex-col sm:flex-row gap-4">
             <a
-              href="https://wa.me/56950909031"
+              href="https://wa.me/56947153763"
               target="_blank"
               className="bg-cyan-500 hover:bg-cyan-400 text-black px-6 py-3 rounded-xl font-semibold text-center transition"
             >

@@ -33,7 +33,7 @@ const Highlights = () => {
               alt={card.title}
               className="h-96 w-full object-cover"
             />
-            <div className="absolute inset-0 bg-black/20 p-6 flex flex-col justify-end text-white">
+            <div className="absolute inset-0 bg-black/20 p-6 flex flex-col justify-end text-white font-bold">
               <h3 className="text-2xl font-bold mb-2">{card.title}</h3>
               <p className="">{card.desc}</p>
             </div>

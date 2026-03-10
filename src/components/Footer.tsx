@@ -37,7 +37,7 @@ const Footer = () => {
           <p>📞 +56 9 5090 9031</p>
 
           <a
-            href="https://wa.me/56950909031"
+            href="https://wa.me/56947153763"
             target="_blank"
             rel="noopener noreferrer"
             className="inline-flex items-center gap-2 text-green-600 font-semibold mt-2"

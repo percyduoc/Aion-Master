@@ -52,7 +52,7 @@ const PromoSeguridad = () => {
           {/* CTA */}
           <div className="flex flex-col sm:flex-row gap-4">
             <a
-              href="https://wa.me/56950909031"
+              href="https://wa.me/56947153763"
               target="_blank"
               rel="noopener noreferrer"
               className="bg-cyan-500 hover:bg-cyan-400 text-black px-8 py-3 rounded-xl font-semibold transition text-center"

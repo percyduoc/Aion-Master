@@ -80,7 +80,7 @@ const Camaras = () => {
                   ))}
                 </ul>
                 <a
-                  href="https://wa.me/56950909031"
+                  href="https://wa.me/56947153763"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="block text-center bg-[#022E46] text-white py-3 rounded-lg font-semibold hover:bg-[#014d72] transition"
@@ -160,7 +160,7 @@ const Camaras = () => {
                   ))}
                 </ul>
                 <a
-                  href="https://wa.me/56950909031"
+                  href="https://wa.me/56947153763"
                   target="_blank"
                   rel="noopener noreferrer"
                   className={`block text-center py-3 rounded-lg font-semibold transition ${

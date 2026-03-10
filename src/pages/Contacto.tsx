@@ -50,7 +50,7 @@ Necesidad:
 ${mensaje}
 `;
 
-    const url = `https://wa.me/56950909031?text=${encodeURIComponent(texto)}`;
+    const url = `https://wa.me/56947153763?text=${encodeURIComponent(texto)}`;
     window.open(url, "_blank");
 
     setNombre("");
@@ -154,7 +154,7 @@ ${mensaje}
           {/* CTA EXTRA */}
           <div className="flex flex-col md:flex-row items-center justify-center gap-4">
             <a
-              href="https://wa.me/56950909031"
+              href="https://wa.me/56947153763"
               target="_blank"
               rel="noopener noreferrer"
               className="inline-flex items-center gap-3 bg-green-500 hover:bg-green-600 text-white px-6 py-3 rounded-full font-semibold transition"
