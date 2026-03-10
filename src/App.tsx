@@ -6,6 +6,7 @@ import Inicio from './pages/Inicio';
 import Nosotros from './pages/Nosotros';
 import Contacto from './pages/Contacto';
 import ScrollToTop from "./components/ScrollToTop";
+import WhatsappButton from "./components/WhatsappButton";
 
 function App() {
   return (
@@ -21,6 +22,7 @@ function App() {
           </Routes>
         </main>
         <Footer />
+        <WhatsappButton />
       </div>
     </Router>
   );

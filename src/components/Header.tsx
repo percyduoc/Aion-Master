@@ -9,36 +9,35 @@ const Header = () => {
     `uppercase tracking-widest text-sm font-medium transition-colors ${
       isActive(path)
         ? "text-cyan-400"
-        : "text-white hover:text-cyan-300"
+        : "text-cyan-400 hover:text-cyan-700"
     }`;
 
   return (
     <header className="fixed top-0 inset-x-0 z-50">
       <div className=" backdrop-blur-md">
-        <div className="max-w-7xl mx-auto px-1">
-          <div className="grid grid-cols-3 items-center h-24">
-            <nav className="flex gap-5">
-              <Link to="/" className={linkClass("/")}>
-                Inicio
-              </Link>
+        <div className=" mx-auto ">
+          <div className="grid grid-cols-3 items-center h-28">
+
+            {/* Left menu */}
+            <nav className="flex justify-center ">
               <Link to="/nosotros" className={linkClass("/nosotros")}>
                 Nosotros
               </Link>
             </nav>
 
-            {/* Logo center */}
+            {/* Logo center (Inicio) */}
             <div className="flex justify-center">
               <Link to="/">
                 <img
                   src={LogoPark}
                   alt="Logo"
-                  className=" w-24 h-auto"
+                  className="w-32 h-auto"
                 />
               </Link>
             </div>
 
             {/* Right menu */}
-            <nav className="flex menu1 gap-10">
+            <nav className="flex justify-center ">
               <Link to="/contacto" className={linkClass("/contacto")}>
                 Contacto
               </Link>

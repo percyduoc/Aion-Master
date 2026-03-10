@@ -9,7 +9,7 @@
 }
 
 html {
-  scroll-behavior: smooth;
+  
 }
 
 h1,
@@ -30,7 +30,7 @@ div {
 
 body {
   line-height: 1;
-  overflow-x: hidden !important;
+ 
 }
 
 
@@ -83,17 +83,18 @@ body {
 
 
 @media (max-width: 768px) {
-  .logo-fixed {
+  /* .logo-fixed {
     position: absolute;
     top: 20%;   
     left: 50%;  
     transform: translate(-50%, -20%);
-  }
+  } */
   .menu1{
     justify-content: center;
 
 
   }
+  
 
 }
 

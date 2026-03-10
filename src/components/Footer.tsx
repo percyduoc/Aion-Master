@@ -34,7 +34,7 @@ const Footer = () => {
           <h4 className="font-semibold text-gray-900">Contacto</h4>
           <p>📍 Viña del Mar, Chile</p>
           <p>✉️ contacto@aiontech.cl</p>
-          <p>📞 +56 9 5090 9031</p>
+          <p>📞 +56 9 4715 3763</p>
 
           <a
             href="https://wa.me/56947153763"
