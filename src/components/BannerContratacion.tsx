@@ -8,7 +8,7 @@ const BannerContratacion = () => {
         whileInView={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.7 }}
         viewport={{ once: true }}
-        className="max-w-7xl mx-auto rounded-3xl overflow-hidden bg-gradient-to-r from-[#021520] to-[#043b55] flex flex-col md:flex-row items-center"
+        className="max-w-7xl mx-auto rounded-3xl  bg-gradient-to-r from-[#021520] to-[#043b55] flex flex-col md:flex-row items-center"
       >
         {/* Texto */}
         <div className="flex-1 p-10 text-white">

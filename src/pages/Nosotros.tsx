@@ -126,7 +126,7 @@ const Nosotros = () => {
   ];
 
   return (
-    <div className="overflow-x-hidden bg-gray-50">
+    <div className=" bg-gray-50">
       {/* ---------------- INTRO ---------------- */}
       <motion.section
         initial="hidden"
