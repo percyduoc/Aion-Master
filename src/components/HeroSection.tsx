@@ -23,7 +23,7 @@ const HeroSection = () => {
   }, []);
 
   return (
-    <section className="relative overflow-hidden py-24 text-white">
+    <section className="relative  py-24 text-white">
       <AnimatedBackground />
 
       <div className="relative z-10 pt-16 flex flex-col items-center text-center px-4 max-w-4xl mx-auto">
@@ -43,7 +43,7 @@ const HeroSection = () => {
         </h1>
 
         {/* Slider */}
-        <div className="h-16 flex items-center justify-center overflow-hidden">
+        <div className="h-16 flex items-center justify-center ">
           <AnimatePresence mode="wait">
             <motion.p
               key={index}

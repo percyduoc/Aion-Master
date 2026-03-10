@@ -60,14 +60,14 @@ ${mensaje}
   };
 
   return (
-    <section className="bg-gray-50 overflow-hidden">
+    <section className="bg-gray-50 ">
       {/* HERO */}
       <motion.section
         initial="hidden"
         whileInView="visible"
         variants={fadeUp}
         transition={{ duration: 0.8 }}
-        className="relative overflow-hidden pt-36 pb-20 text-center text-white"
+        className="relative  pt-36 pb-20 text-center text-white"
       >
         <AnimatedBackground />
 

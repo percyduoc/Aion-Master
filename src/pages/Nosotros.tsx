@@ -133,7 +133,7 @@ const Nosotros = () => {
         whileInView="visible"
         variants={fadeInUp}
         transition={{ duration: 0.8 }}
-        className="relative overflow-hidden pt-36 pb-20 text-center text-white"
+        className="relative  pt-36 pb-20 text-center text-white"
       >
         <AnimatedBackground />
 
@@ -283,7 +283,7 @@ const Nosotros = () => {
                 key={i}
                 variants={fadeInUp}
                 whileHover={{ scale: 1.04 }}
-                className="bg-white rounded-xl shadow-lg overflow-hidden border border-sky-100"
+                className="bg-white rounded-xl shadow-lg  border border-sky-100"
               >
                 <div className="relative">
                   <img

@@ -26,7 +26,7 @@ const Highlights = () => {
           <motion.div
             key={i}
             whileHover={{ scale: 1.03 }}
-            className="relative rounded-2xl overflow-hidden shadow-xl"
+            className="relative rounded-2xl  shadow-xl"
           >
             <img
               src={card.img}
