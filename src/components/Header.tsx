@@ -13,7 +13,7 @@ const Header = () => {
     }`;
 
   return (
-    <header className="fixed top-0 left-0 w-full z-50">
+    <header className="fixed top-0 left-0 z-50">
       <div className=" backdrop-blur-md">
         <div className=" mx-auto ">
           <div className="grid grid-cols-3 items-center h-28">

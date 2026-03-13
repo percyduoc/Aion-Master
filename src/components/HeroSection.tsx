@@ -26,7 +26,7 @@ const HeroSection = () => {
     <section className="relative  py-24 text-white">
       <AnimatedBackground />
 
-      <div className="relative z-10 pt-16 flex flex-col items-center text-center px-4 max-w-4xl mx-auto">
+      <div className="relative z-10 pt-16 flex flex-col items-center text-center px-4  mx-auto">
         
         {/* Logo */}
         {/* <div className="h-28 flex items-center justify-center mb-6">

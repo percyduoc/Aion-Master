@@ -2,7 +2,7 @@ import React from "react";
 import WhatsappIcon from '../assets/svg/whatsapp-logo.svg';
 
 const WhatsappButton = () => {
-  const phone = "56912345678"; // tu número
+  const phone = "56947153763"; // 
   const message = "Hola! Me gustaría consultar sobre sus servicios";
 
   const url = `https://wa.me/${phone}?text=${encodeURIComponent(message)}`;
