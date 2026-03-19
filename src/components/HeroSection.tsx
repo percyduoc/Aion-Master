@@ -23,7 +23,7 @@ const HeroSection = () => {
   }, []);
 
   return (
-    <section className="relative  py-24 text-white">
+    <section className="relative py-24 text-white overflow-hidden">
       <AnimatedBackground />
 
       <div className="relative z-10 pt-16 flex flex-col items-center text-center px-4  mx-auto">

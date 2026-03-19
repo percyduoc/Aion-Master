@@ -9,29 +9,42 @@ const AnimatedBackground = () => {
     const canvas = canvasRef.current!;
     const ctx = canvas.getContext("2d")!;
 
-    const resize = () => {
-      canvas.width = window.innerWidth;
-      canvas.height = canvas.parentElement?.clientHeight || window.innerHeight;
-    };
-    resize();
-    window.addEventListener("resize", resize);
+    let nodes: any[] = [];
+    let animationFrameId: number;
 
     const cx = () => canvas.width / 2;
     const cy = () => canvas.height / 2;
 
-    // 🔹 nodos simulando casas / cámaras
-    const nodes = Array.from({ length: 14 }).map(() => {
-      const angle = Math.random() * Math.PI * 2;
-      const radius = 180 + Math.random() * 280;
+    // 🔹 Crear nodos (ahora dinámico según tamaño)
+    const createNodes = () => {
+      const maxRadius = Math.min(canvas.width, canvas.height) / 2 - 40;
 
-      return {
-        x: Math.cos(angle) * radius,
-        y: Math.sin(angle) * radius,
-        r: 6,
-        pulse: Math.random() * 100,
-        type: Math.random() > 0.5 ? "camera" : "house" as NodeType
-      };
-    });
+      nodes = Array.from({ length: 14 }).map(() => {
+        const angle = Math.random() * Math.PI * 2;
+        const radius = 80 + Math.random() * maxRadius;
+
+        return {
+          x: Math.cos(angle) * radius,
+          y: Math.sin(angle) * radius,
+          r: 6,
+          pulse: Math.random() * 100,
+          type: Math.random() > 0.5 ? "camera" : ("house" as NodeType),
+        };
+      });
+    };
+
+    // 🔹 Resize seguro
+    const resize = () => {
+      const parent = canvas.parentElement;
+
+      canvas.width = parent?.clientWidth || window.innerWidth;
+      canvas.height = parent?.clientHeight || window.innerHeight;
+
+      createNodes(); // 🔥 recalcular nodos al cambiar tamaño
+    };
+
+    resize();
+    window.addEventListener("resize", resize);
 
     let t = 0;
 
@@ -42,11 +55,9 @@ const AnimatedBackground = () => {
       ctx.beginPath();
 
       if (type === "camera") {
-        // cámara simple
         ctx.rect(x - 6, y - 4, 12, 8);
         ctx.arc(x + 8, y, 2, 0, Math.PI * 2);
       } else {
-        // casa simple
         ctx.moveTo(x - 6, y);
         ctx.lineTo(x, y - 6);
         ctx.lineTo(x + 6, y);
@@ -59,20 +70,27 @@ const AnimatedBackground = () => {
     };
 
     const draw = () => {
+      // 🔒 Clipping para evitar overflow visual
+      ctx.save();
+      ctx.beginPath();
+      ctx.rect(0, 0, canvas.width, canvas.height);
+      ctx.clip();
+
+      // fondo
       ctx.fillStyle = "#021520";
       ctx.fillRect(0, 0, canvas.width, canvas.height);
 
       // 🔵 Radar rings
       for (let i = 0; i < 5; i++) {
         ctx.beginPath();
-        ctx.arc(cx(), cy(), 100 + i * 70 + (t % 70), 0, Math.PI * 2);
+        ctx.arc(cx(), cy(), 80 + i * 60 + (t % 60), 0, Math.PI * 2);
         ctx.strokeStyle = "rgba(0,200,255,0.06)";
         ctx.lineWidth = 2;
         ctx.stroke();
       }
 
       // 🌐 líneas de red
-      nodes.forEach(n => {
+      nodes.forEach((n) => {
         ctx.beginPath();
         ctx.moveTo(cx(), cy());
         ctx.lineTo(cx() + n.x, cy() + n.y);
@@ -81,12 +99,14 @@ const AnimatedBackground = () => {
       });
 
       // 📍 nodos + pulso
-      nodes.forEach(n => {
+      nodes.forEach((n) => {
         const px = cx() + n.x;
         const py = cy() + n.y;
 
         // pulso
-        const pulseSize = Math.abs(Math.sin((t + n.pulse) * 0.02)) * 12;
+        const pulseSize =
+          Math.abs(Math.sin((t + n.pulse) * 0.02)) * 10;
+
         ctx.beginPath();
         ctx.arc(px, py, pulseSize, 0, Math.PI * 2);
         ctx.strokeStyle = "rgba(0,200,255,0.15)";
@@ -102,12 +122,18 @@ const AnimatedBackground = () => {
         drawIcon(px, py, n.type);
       });
 
+      ctx.restore(); // 🔓 fin clipping
+
       t += 0.6;
-      requestAnimationFrame(draw);
+      animationFrameId = requestAnimationFrame(draw);
     };
 
     draw();
-    return () => window.removeEventListener("resize", resize);
+
+    return () => {
+      window.removeEventListener("resize", resize);
+      cancelAnimationFrame(animationFrameId);
+    };
   }, []);
 
   return (

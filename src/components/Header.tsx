@@ -13,19 +13,19 @@ const Header = () => {
     }`;
 
   return (
-    <header className="fixed top-0 left-0 z-50">
-      <div className=" backdrop-blur-md">
-        <div className=" mx-auto ">
+    <header className="fixed top-0 left-0 w-full z-50">
+      <div className="backdrop-blur-md">
+        <div className="max-w-7xl mx-auto px-4">
           <div className="grid grid-cols-3 items-center h-28">
 
             {/* Left menu */}
-            <nav className="flex justify-center ">
+            <nav className="flex justify-center">
               <Link to="/nosotros" className={linkClass("/nosotros")}>
                 Nosotros
               </Link>
             </nav>
 
-            {/* Logo center (Inicio) */}
+            {/* Logo */}
             <div className="flex justify-center">
               <Link to="/">
                 <img
@@ -37,7 +37,7 @@ const Header = () => {
             </div>
 
             {/* Right menu */}
-            <nav className="flex justify-center ">
+            <nav className="flex justify-center">
               <Link to="/contacto" className={linkClass("/contacto")}>
                 Contacto
               </Link>
