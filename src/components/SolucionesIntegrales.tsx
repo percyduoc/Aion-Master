@@ -1,7 +1,7 @@
 import { motion } from "framer-motion";
 import { Shield, Cctv, Network, Server, CheckCircle2, ArrowRight, Zap } from "lucide-react";
 
-// --- DATOS ENRIQUECIDOS (Copywriting Corporativo) ---
+
 const soluciones = [
   {
     icon: <Shield className="w-8 h-8 text-cyan-400" />,
@@ -66,7 +66,7 @@ const itemVariants = {
 
 const SolucionesIntegrales = () => {
   return (
-    <section className="relative bg-[#020617] text-slate-50 py-24 px-6 md:px-8 overflow-hidden font-sans">
+    <section className="relative bg-[#020617] text-slate-50 py-12 px-6 md:px-8 overflow-hidden font-sans">
       
       {/* Background UI Premium */}
       <div className="absolute inset-0 bg-[url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNDAiIGhlaWdodD0iNDAiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PGNpcmNsZSBjeD0iMSIgY3k9IjEiIHI9IjEiIGZpbGw9InJnYmEoMjU1LDI1NSwyNTUsMC4wMykiLz48L3N2Zz4=')] [mask-image:linear-gradient(to_bottom,white_20%,transparent_100%)] pointer-events-none z-0" />

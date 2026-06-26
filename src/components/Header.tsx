@@ -6,7 +6,7 @@ const Header = () => {
   const isActive = (path: string) => location.pathname === path;
 
   const linkClass = (path: string) =>
-    `uppercase tracking-widest text-sm font-medium transition-colors ${
+    `uppercase tracking-widest text-m font-medium transition-colors ${
       isActive(path)
         ? "text-cyan-400"
         : "text-cyan-400 hover:text-cyan-700"

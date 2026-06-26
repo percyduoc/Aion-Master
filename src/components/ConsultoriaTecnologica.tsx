@@ -12,7 +12,7 @@ const items = [
 
 const ConsultoriaTecnologica = () => {
   return (
-    <section className="bg-gradient-to-br from-[#021520] to-[#063B55] text-white py-24 px-4">
+    <section className="bg-gradient-to-br from-[#021520] to-[#063B55] text-white py-12 px-4">
       <div className="max-w-7xl mx-auto text-center mb-16">
         <h2 className="text-3xl md:text-5xl font-extrabold mb-6">
           Consultoría tecnológica

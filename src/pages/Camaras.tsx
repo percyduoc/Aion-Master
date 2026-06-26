@@ -1,308 +1,196 @@
-import { motion } from "framer-motion";
+import React, { useState } from "react";
+import { motion, AnimatePresence } from "framer-motion";
 import { 
   ShieldAlert, 
-  TerminalSquare, 
-  Bug, 
-  Search, 
-  CloudRain, 
-  Activity, 
-  ChevronRight, 
-  Award, 
-  CheckCircle2, 
+  Database, 
+  ServerCrash, 
   ArrowRight,
-  ShieldCheck
+  ShieldCheck,
+  CheckCircle2,
+  ChevronLeft,
+  ChevronRight
 } from "lucide-react";
 
-// --- DATOS ENRIQUECIDOS (Marketing + Ciberseguridad) ---
-const servicios = [
+// --- DATOS INTERACTIVOS ---
+const casosDeUso = [
   {
-    icon: <Search className="w-8 h-8 text-cyan-400" />,
-    title: "Auditoría de Riesgos",
-    desc: "Mapeo exhaustivo de su superficie de ataque. Identificamos brechas críticas antes de que impacten su operación o reputación.",
+    id: "ransomware",
+    icon: <ShieldAlert className="w-5 h-5 sm:w-6 sm:h-6" />,
+    tabTitle: "Ransomware",
+    title: "Neutralización de Secuestro de Datos",
+    desc: "El 70% de las empresas que sufren ransomware quiebran en menos de un año. Aislamos la amenaza en milisegundos y recuperamos su operatividad.",
+    beneficios: ["Bloqueo automático de encriptación", "Recuperación de respaldos", "Expulsión del atacante"],
+    image: "https://images.unsplash.com/photo-1526374965328-7f61d4dc18c5?auto=format&fit=crop&q=80&w=800"
   },
   {
-    icon: <TerminalSquare className="w-8 h-8 text-blue-400" />,
-    title: "Pentesting Ético",
-    desc: "Simulaciones de ataque de grado militar (Red Teaming) para testear la resiliencia real de su infraestructura de red y aplicaciones.",
+    id: "fuga",
+    icon: <Database className="w-5 h-5 sm:w-6 sm:h-6" />,
+    tabTitle: "Fuga de Datos",
+    title: "Blindaje de Información Confidencial",
+    desc: "Evite multas millonarias y pérdida de confianza. Auditamos sus bases de datos y establecemos políticas estrictas de Cero Confianza (Zero Trust).",
+    beneficios: ["Prevención de robo interno", "Encriptación de extremo a extremo", "Cumplimiento legal"],
+    image: "https://images.unsplash.com/photo-1563986768494-4dee2763ff3f?auto=format&fit=crop&q=80&w=800"
   },
   {
-    icon: <Bug className="w-8 h-8 text-red-400" />,
-    title: "Respuesta a Incidentes",
-    desc: "Contención inmediata, erradicación de malware persistente y recuperación de sistemas comprometidos por ransomware.",
-  },
-  {
-    icon: <ShieldAlert className="w-8 h-8 text-cyan-400" />,
-    title: "Análisis Forense Digital",
-    desc: "Trazabilidad completa del ataque, recolección de evidencia digital con cadena de custodia legal y análisis de causa raíz.",
-  },
-  {
-    icon: <CloudRain className="w-8 h-8 text-blue-400" />,
-    title: "Arquitectura Cloud Segura",
-    desc: "Fortificación y auditoría de configuraciones en entornos AWS, Azure y GCP bajo normativas internacionales (CIS Controls).",
-  },
-  {
-    icon: <Activity className="w-8 h-8 text-emerald-400" />,
-    title: "Monitoreo SOC 24/7",
-    desc: "Vigilancia ininterrumpida, análisis de logs en tiempo real y neutralización activa de amenazas mediante inteligencia artificial.",
-  },
+    id: "downtime",
+    icon: <ServerCrash className="w-5 h-5 sm:w-6 sm:h-6" />,
+    tabTitle: "Caída de Sistema",
+    title: "Continuidad Operativa 24/7",
+    desc: "Cada minuto que su sistema está caído, su empresa pierde dinero. Monitoreamos y fortificamos su red para garantizar máxima disponibilidad.",
+    beneficios: ["Defensa contra ataques DDoS", "Monitoreo en tiempo real", "Arquitectura resiliente"],
+    image: "https://images.unsplash.com/photo-1558494949-ef010cbdcc31?auto=format&fit=crop&q=80&w=800"
+  }
 ];
 
-const procesos = [
-  { step: "01", title: "Reconocimiento", desc: "Mapeo de activos digitales" },
-  { step: "02", title: "Explotación Controlada", desc: "Testeo de vulnerabilidades" },
-  { step: "03", title: "Hardening", desc: "Mitigación y parcheo" },
-  { step: "04", title: "Operación Segura", desc: "Monitoreo continuo" },
-];
+const CyberSecurityAnimated = () => {
+  // Manejamos el índice numérico para facilitar el cálculo de "Siguiente" o "Anterior"
+  const [activeIndex, setActiveIndex] = useState(0);
+  const activeTab = casosDeUso[activeIndex];
 
-const certificaciones = [
-  "Ingenieros Informáticos Colegiados",
-  "Certificación CISA / CISM",
-  "OWASP Top 10 Security",
-  "Peritaje Forense Digital",
-  "Normativa ISO/IEC 27001",
-];
+  // Función para detectar el deslizamiento (Swipe)
+  const handleDragEnd = (event, info) => {
+    const umbralSwipe = 50; // Píxeles necesarios para cambiar de tarjeta
+    
+    if (info.offset.x < -umbralSwipe && activeIndex < casosDeUso.length - 1) {
+      // Deslizó hacia la izquierda -> Siguiente
+      setActiveIndex(activeIndex + 1);
+    } else if (info.offset.x > umbralSwipe && activeIndex > 0) {
+      // Deslizó hacia la derecha -> Anterior
+      setActiveIndex(activeIndex - 1);
+    }
+  };
 
-// --- ANIMACIONES ---
-const containerVariants = {
-  hidden: { opacity: 0 },
-  show: { opacity: 1, transition: { staggerChildren: 0.15 } }
-};
-
-const itemVariants = {
-  hidden: { opacity: 0, y: 20 },
-  show: { opacity: 1, y: 0, transition: { type: "spring", stiffness: 250, damping: 25 } }
-};
-
-const CyberSecurity = () => {
   return (
-    <section className="relative bg-[#020617] text-slate-50 font-sans selection:bg-cyan-500/30 overflow-hidden">
+    <section className="relative bg-[#020617] text-slate-50 py-16 md:py-24 overflow-hidden font-sans">
       
-      {/* Background Tech Grid */}
-      <div className="absolute inset-0 bg-[url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNDAiIGhlaWdodD0iNDAiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PGNpcmNsZSBjeD0iMSIgY3k9IjEiIHI9IjEiIGZpbGw9InJnYmEoMjU1LDI1NSwyNTUsMC4wMykiLz48L3N2Zz4=')] [mask-image:linear-gradient(to_bottom,white_10%,transparent_90%)] pointer-events-none" />
-      
-      {/* Orbes de luz */}
-      <div className="absolute top-0 right-0 w-[600px] h-[600px] bg-blue-700/10 rounded-full blur-[150px] pointer-events-none" />
-      <div className="absolute bottom-1/4 left-0 w-[500px] h-[500px] bg-cyan-600/10 rounded-full blur-[150px] pointer-events-none" />
+      <div className="absolute top-0 right-0 w-full md:w-[600px] h-[400px] md:h-[600px] bg-blue-700/10 rounded-full blur-[100px] md:blur-[150px] pointer-events-none" />
+      <div className="absolute bottom-0 left-0 w-full md:w-[500px] h-[400px] md:h-[500px] bg-cyan-600/10 rounded-full blur-[100px] md:blur-[150px] pointer-events-none" />
 
-      <div className="relative z-10 max-w-7xl mx-auto px-6 py-24 lg:py-32">
-
-        {/* --- HERO SECTION --- */}
-        <div className="grid lg:grid-cols-2 gap-16 items-center mb-40">
-          <motion.div
-            initial={{ opacity: 0, x: -30 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.8, ease: "easeOut" }}
-            viewport={{ once: true }}
-            className="relative z-10"
-          >
-            <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-cyan-500/30 bg-cyan-950/40 text-cyan-400 text-sm font-semibold tracking-wide mb-8 shadow-[0_0_15px_rgba(0,229,255,0.1)]">
-              <ShieldCheck className="w-4 h-4" /> Unidades de Defensa Cibernética
-            </div>
-
-            <h1 className="text-5xl md:text-6xl lg:text-7xl font-extrabold mb-6 leading-[1.1] tracking-tighter">
-              Aseguramos sus <br />
-              <span className="text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-blue-500">
-                activos más críticos
-              </span>
-            </h1>
-
-            <p className="text-slate-400 text-lg md:text-xl mb-10 leading-relaxed max-w-xl">
-              Anticípese a las amenazas. Ejecutamos auditorías profundas, pentesting ofensivo y análisis forense para blindar su infraestructura corporativa con precisión militar.
-            </p>
-
-            <div className="flex flex-col sm:flex-row gap-5">
-              <a
-                href="https://wa.me/56947153763"
-                target="_blank"
-                rel="noreferrer"
-                className="group flex items-center justify-center gap-2 bg-gradient-to-r from-cyan-500 to-blue-600 text-white px-8 py-4 rounded-xl font-bold shadow-[0_0_20px_rgba(0,229,255,0.2)] hover:shadow-[0_0_35px_rgba(0,229,255,0.4)] hover:-translate-y-1 transition-all duration-300"
-              >
-                Solicitar Diagnóstico
-                <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
-              </a>
-
-              <a
-                href="https://wa.me/56947153763"
-                target="_blank"
-                rel="noreferrer"
-                className="flex items-center justify-center bg-slate-900/50 backdrop-blur-sm border border-slate-700 text-white px-8 py-4 rounded-xl font-bold hover:bg-slate-800 hover:border-cyan-500/50 transition-all duration-300"
-              >
-                Hablar con un Ingeniero
-              </a>
-            </div>
-          </motion.div>
-
-          {/* Imagen Hero con Glassmorphism */}
-          <motion.div
-            initial={{ opacity: 0, scale: 0.95 }}
-            whileInView={{ opacity: 1, scale: 1 }}
-            transition={{ duration: 0.8 }}
-            viewport={{ once: true }}
-            className="relative"
-          >
-            <div className="absolute inset-0 bg-gradient-to-tr from-cyan-500/20 to-blue-600/20 rounded-[2rem] blur-2xl" />
-            <div className="relative bg-slate-900 border border-slate-700 rounded-[2rem] p-2 shadow-2xl overflow-hidden">
-              <div className="absolute inset-0 bg-cyan-900/20 mix-blend-overlay z-10 pointer-events-none" />
-              <img
-                src="https://images.unsplash.com/photo-1550751827-4bd374c3f58b?auto=format&fit=crop&q=80&w=1000"
-                alt="Operaciones de Ciberseguridad"
-                className="rounded-[1.5rem] w-full h-[400px] object-cover opacity-80"
-              />
-              {/* Overlay decorativo tech */}
-              <div className="absolute bottom-6 right-6 z-20 bg-black/60 backdrop-blur-md border border-white/10 rounded-xl p-4 flex items-center gap-4">
-                 <div className="relative flex h-3 w-3">
-                  <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-red-400 opacity-75"></span>
-                  <span className="relative inline-flex rounded-full h-3 w-3 bg-red-500"></span>
-                </div>
-                <div className="font-mono text-sm">
-                  <span className="text-slate-400">STATE: </span>
-                  <span className="text-emerald-400">SECURE</span>
-                </div>
-              </div>
-            </div>
-          </motion.div>
+      <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6">
+        
+        <div className="text-center max-w-3xl mx-auto mb-10 md:mb-16">
+          <h2 className="text-3xl sm:text-4xl md:text-5xl font-extrabold mb-4 md:mb-6 tracking-tight leading-tight">
+            Anticípese al <span className="text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-blue-500">Peligro</span>
+          </h2>
+          <p className="text-slate-400 text-base md:text-lg px-2">
+            Deslice para descubrir cómo nuestra ingeniería resuelve los riesgos críticos antes de que impacten su empresa.
+          </p>
         </div>
 
-        {/* --- GRID DE SERVICIOS --- */}
-        <div className="mb-40">
-          <div className="text-center max-w-3xl mx-auto mb-16">
-            <h2 className="text-3xl md:text-5xl font-extrabold mb-6 tracking-tight">Vectores de <span className="text-cyan-400">Defensa</span></h2>
-            <p className="text-slate-400 text-lg">Soluciones de ingeniería especializada para proteger sus sistemas críticos frente a vectores de ataque modernos.</p>
-          </div>
-
-          <motion.div 
-            variants={containerVariants}
-            initial="hidden"
-            whileInView="show"
-            viewport={{ once: true, margin: "-50px" }}
-            className="grid md:grid-cols-2 lg:grid-cols-3 gap-6"
-          >
-            {servicios.map((servicio, index) => (
-              <motion.div
-                variants={itemVariants}
-                key={index}
-                className="group bg-slate-900/40 backdrop-blur-sm border border-slate-800 rounded-3xl p-8 hover:bg-slate-800/60 hover:border-cyan-500/40 transition-all duration-300"
-              >
-                <div className="mb-6 w-16 h-16 rounded-2xl bg-slate-950 border border-slate-800 flex items-center justify-center group-hover:scale-110 transition-transform duration-300 shadow-inner">
-                  {servicio.icon}
-                </div>
-                <h3 className="text-xl font-bold text-white mb-3">{servicio.title}</h3>
-                <p className="text-slate-400 text-sm leading-relaxed">{servicio.desc}</p>
-              </motion.div>
-            ))}
-          </motion.div>
-        </div>
-
-        {/* --- METODOLOGÍA (PIPELINE) --- */}
-        <div className="mb-40 relative">
-          <h2 className="text-3xl md:text-4xl font-extrabold text-center mb-16 tracking-tight">Protocolo de Intervención</h2>
-          
-          <div className="flex flex-col md:flex-row items-center justify-between gap-6 relative">
-            {/* Línea conectora de fondo (Solo Desktop) */}
-            <div className="hidden md:block absolute top-1/2 left-0 w-full h-[1px] bg-gradient-to-r from-transparent via-slate-700 to-transparent -translate-y-1/2 z-0" />
-            
-            {procesos.map((proceso, index) => (
-              <motion.div
-                key={index}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                transition={{ delay: index * 0.15 }}
-                viewport={{ once: true }}
-                className="relative z-10 flex flex-col items-center text-center w-full md:w-1/4"
-              >
-                <div className="w-16 h-16 rounded-full bg-slate-950 border-2 border-cyan-900 flex items-center justify-center text-cyan-400 font-mono font-bold text-xl mb-6 shadow-[0_0_20px_rgba(0,229,255,0.1)]">
-                  {proceso.step}
-                </div>
-                <h3 className="text-lg font-bold text-white mb-2">{proceso.title}</h3>
-                <p className="text-sm text-slate-400">{proceso.desc}</p>
-                
-                {/* Flecha conectora móvil */}
-                {index < procesos.length - 1 && (
-                  <ChevronRight className="w-6 h-6 text-slate-700 mt-4 md:hidden" />
-                )}
-              </motion.div>
-            ))}
-          </div>
-        </div>
-
-        {/* --- PANEL DE AUTORIDAD (STATS & CERTS) --- */}
-        <div className="mb-40 grid lg:grid-cols-[1fr,2fr] gap-8">
-          
-          {/* Stats Box */}
-          <motion.div 
-            initial={{ opacity: 0, x: -20 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true }}
-            className="bg-gradient-to-br from-cyan-950 to-slate-900 border border-cyan-900/50 rounded-3xl p-10 flex flex-col justify-center"
-          >
-            {[
-              { num: "+2.5K", label: "Vulnerabilidades Mitigadas" },
-              { num: "0", label: "Brechas Post-Intervención" }
-            ].map((stat, i) => (
-              <div key={i} className={`${i !== 0 ? 'mt-8 pt-8 border-t border-cyan-900/50' : ''}`}>
-                <h3 className="text-5xl font-black text-cyan-400 font-mono tracking-tighter mb-2">{stat.num}</h3>
-                <p className="text-slate-300 font-medium">{stat.label}</p>
-              </div>
-            ))}
-          </motion.div>
-
-          {/* Certifications Box */}
-          <motion.div 
-            initial={{ opacity: 0, x: 20 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true }}
-            className="bg-slate-900/50 border border-slate-800 rounded-3xl p-10 lg:p-12 flex flex-col justify-center"
-          >
-            <h3 className="text-2xl font-bold mb-8 flex items-center gap-3">
-              <Award className="w-6 h-6 text-cyan-400" /> 
-              Acreditaciones de la Industria
-            </h3>
-            <div className="flex flex-wrap gap-3">
-              {certificaciones.map((cert, index) => (
-                <span
-                  key={index}
-                  className="inline-flex items-center gap-2 bg-slate-950 border border-slate-700 text-slate-300 px-4 py-2.5 rounded-lg text-sm font-medium"
-                >
-                  <CheckCircle2 className="w-4 h-4 text-cyan-500" />
-                  {cert}
-                </span>
-              ))}
-            </div>
-          </motion.div>
-
-        </div>
-
-        {/* --- CTA BOTTOM --- */}
-        <motion.div 
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          className="relative rounded-[2.5rem] overflow-hidden"
-        >
-          <div className="absolute inset-0 bg-gradient-to-r from-cyan-600 to-blue-700" />
-          <div className="absolute inset-0 bg-[url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNDAiIGhlaWdodD0iNDAiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PGNpcmNsZSBjeD0iMSIgY3k9IjEiIHI9IjEiIGZpbGw9InJnYmEoMjU1LDI1NSwyNTUsMC4xNSkiLz48L3N2Zz4=')] mix-blend-overlay" />
-          
-          <div className="relative z-10 p-12 md:p-20 text-center">
-            <h2 className="text-4xl md:text-5xl font-extrabold text-white mb-6 tracking-tight">
-              No espere al próximo incidente.
-            </h2>
-            <p className="text-cyan-100 text-lg md:text-xl mb-10 max-w-2xl mx-auto">
-              Contrate inteligencia ofensiva y defensiva. Ejecutemos un escaneo de superficie hoy mismo para conocer su exposición real.
-            </p>
-            <a
-              href="https://wa.me/56947153763"
-              target="_blank"
-              rel="noreferrer"
-              className="inline-flex items-center gap-2 bg-[#020617] text-white px-10 py-5 rounded-2xl font-bold text-lg hover:bg-slate-900 shadow-2xl hover:shadow-cyan-900/50 hover:-translate-y-1 transition-all duration-300"
+        {/* Controles de Pestañas (Se sincronizan con el deslizamiento) */}
+        <div className="flex overflow-x-auto pb-4 mb-8 md:mb-12 snap-x snap-mandatory gap-3 sm:gap-4 sm:flex-wrap sm:justify-center [&::-webkit-scrollbar]:hidden [-ms-overflow-style:none] [scrollbar-width:none] w-full px-2 sm:px-0">
+          {casosDeUso.map((caso, index) => (
+            <button
+              key={caso.id}
+              onClick={() => setActiveIndex(index)}
+              className={`whitespace-nowrap shrink-0 snap-center flex items-center gap-2 sm:gap-3 px-5 sm:px-6 py-3 sm:py-4 rounded-xl sm:rounded-2xl text-sm sm:text-base font-bold transition-all duration-300 border ${
+                activeIndex === index
+                  ? "bg-cyan-500/10 border-cyan-500 text-cyan-400 shadow-[0_0_20px_rgba(0,229,255,0.2)]"
+                  : "bg-slate-900/50 border-slate-800 text-slate-400 hover:bg-slate-800 hover:text-slate-200"
+              }`}
             >
-              Iniciar Auditoría de Seguridad <ArrowRight className="w-5 h-5" />
-            </a>
-          </div>
-        </motion.div>
+              {caso.icon}
+              {caso.tabTitle}
+            </button>
+          ))}
+        </div>
 
+        {/* Panel Interactivo de Contenido (Swipeable) */}
+        <div className="relative bg-slate-900/40 backdrop-blur-md border border-slate-800 rounded-3xl md:rounded-[2.5rem] p-5 sm:p-8 md:p-12 min-h-[400px] md:min-h-[500px] flex items-center shadow-2xl overflow-hidden cursor-grab active:cursor-grabbing">
+          
+          {/* Indicadores de Swipe (Solo móviles) */}
+          <div className="absolute top-1/2 -translate-y-1/2 left-2 z-30 md:hidden opacity-30">
+            {activeIndex > 0 && <ChevronLeft className="w-8 h-8 text-cyan-400 animate-pulse" />}
+          </div>
+          <div className="absolute top-1/2 -translate-y-1/2 right-2 z-30 md:hidden opacity-30">
+            {activeIndex < casosDeUso.length - 1 && <ChevronRight className="w-8 h-8 text-cyan-400 animate-pulse" />}
+          </div>
+
+          <AnimatePresence mode="wait">
+            <motion.div
+              key={activeTab.id}
+              drag="x" // Permite arrastrar horizontalmente
+              dragConstraints={{ left: 0, right: 0 }} // Devuelve la tarjeta a su lugar tras soltarla
+              dragElastic={0.2} // Dureza del rebote
+              onDragEnd={handleDragEnd} // Lógica para cambiar la tarjeta
+              initial={{ opacity: 0, x: 50 }}
+              animate={{ opacity: 1, x: 0 }}
+              exit={{ opacity: 0, x: -50 }}
+              transition={{ duration: 0.3, ease: "easeOut" }}
+              className="flex flex-col lg:grid lg:grid-cols-2 gap-8 lg:gap-12 items-center w-full touch-pan-y"
+            >
+              
+              {/* Imagen Responsiva */}
+              <div className="order-1 lg:order-2 relative w-full h-[220px] sm:h-[300px] lg:h-[400px] rounded-2xl lg:rounded-3xl overflow-hidden border border-slate-700/50 shadow-inner group pointer-events-none">
+                <div className="absolute inset-0 bg-cyan-900/30 mix-blend-overlay z-10" />
+                
+                {/* Efecto Escáner Láser Animado */}
+                <motion.div
+                  initial={{ top: "-10%" }}
+                  animate={{ top: "110%" }}
+                  transition={{ duration: 2.5, repeat: Infinity, ease: "linear" }}
+                  className="absolute left-0 w-full h-1 bg-cyan-400 shadow-[0_0_20px_rgba(34,211,238,1)] z-30 opacity-70"
+                />
+
+                <img
+                  src={activeTab.image}
+                  alt={activeTab.title}
+                  className="w-full h-full object-cover"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-[#020617] lg:from-[#020617]/50 via-transparent to-transparent z-20" />
+              </div>
+
+              {/* Texto de la Solución */}
+              <div className="order-2 lg:order-1 w-full pointer-events-auto">
+                <div className="inline-flex items-center gap-1.5 sm:gap-2 px-3 sm:px-4 py-1 sm:py-1.5 rounded-full bg-blue-500/10 text-blue-400 text-xs sm:text-sm font-semibold mb-4 sm:mb-6 border border-blue-500/20">
+                  <ShieldCheck className="w-3.5 h-3.5 sm:w-4 sm:h-4" /> Solución Activa
+                </div>
+                
+                <h3 className="text-2xl sm:text-3xl md:text-4xl font-bold text-white mb-4 sm:mb-6 leading-tight">
+                  {activeTab.title}
+                </h3>
+                
+                <p className="text-slate-400 text-base sm:text-lg leading-relaxed mb-6 sm:mb-8">
+                  {activeTab.desc}
+                </p>
+
+                <ul className="space-y-3 sm:space-y-4 mb-8 sm:mb-10">
+                  {activeTab.beneficios.map((beneficio, i) => (
+                    <li key={i} className="flex items-start sm:items-center gap-3 text-slate-300 text-sm sm:text-base font-medium leading-snug">
+                      <CheckCircle2 className="w-5 h-5 text-cyan-400 flex-shrink-0 mt-0.5 sm:mt-0" />
+                      {beneficio}
+                    </li>
+                  ))}
+                </ul>
+
+                <a
+                  href="https://wa.me/56947153763"
+                  target="_blank"
+                  rel="noreferrer"
+                  className="group flex sm:inline-flex items-center justify-center gap-2 bg-gradient-to-r from-cyan-500 to-blue-600 text-white px-6 sm:px-8 py-3.5 sm:py-4 rounded-xl font-bold shadow-lg hover:shadow-cyan-500/25 transition-all duration-300 hover:-translate-y-1 w-full sm:w-auto text-center"
+                >
+                  Proteger mi negocio ahora
+                  <ArrowRight className="w-4 h-4 sm:w-5 sm:h-5 group-hover:translate-x-1 transition-transform" />
+                </a>
+              </div>
+
+            </motion.div>
+          </AnimatePresence>
+
+          {/* Paginación de Puntos (Dots) Inferior para Móviles */}
+          <div className="absolute bottom-4 left-1/2 -translate-x-1/2 flex gap-2 md:hidden">
+            {casosDeUso.map((_, idx) => (
+              <div 
+                key={idx} 
+                className={`h-1.5 rounded-full transition-all duration-300 ${activeIndex === idx ? 'w-6 bg-cyan-400' : 'w-2 bg-slate-700'}`}
+              />
+            ))}
+          </div>
+
+        </div>
       </div>
     </section>
   );
 };
 
-export default CyberSecurity;
+export default CyberSecurityAnimated;

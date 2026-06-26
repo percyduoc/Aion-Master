@@ -8,7 +8,7 @@ const fadeUp = {
 
 const PromoSeguridad = () => {
   return (
-    <section className="py-24 px-4 bg-gradient-to-br from-[#021520] to-[#063B55] text-white">
+    <section className="py-12 px-4 bg-gradient-to-br from-[#021520] to-[#063B55] text-white">
       <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-16 items-center">
 
         {/* COLUMNA IZQUIERDA – COPY */}
