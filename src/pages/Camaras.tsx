@@ -126,10 +126,10 @@ const CyberSecurityAnimated = () => {
                 
                 {/* Efecto Escáner Láser Animado */}
                 <motion.div
-                  initial={{ top: "-10%" }}
-                  animate={{ top: "110%" }}
-                  transition={{ duration: 2.5, repeat: Infinity, ease: "linear" }}
-                  className="absolute left-0 w-full h-1 bg-cyan-400 shadow-[0_0_20px_rgba(34,211,238,1)] z-30 opacity-70"
+                  // initial={{ top: "-10%" }}
+                  // animate={{ top: "110%" }}
+                  // transition={{ duration: 2.5, repeat: Infinity, ease: "linear" }}
+                  // className="absolute left-0 w-full h-1 bg-cyan-400 shadow-[0_0_20px_rgba(34,211,238,1)] z-30 opacity-70"
                 />
 
                 <img
