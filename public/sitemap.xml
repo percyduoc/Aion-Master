@@ -4,20 +4,20 @@
 xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 
   <url>
-    <loc>https://www.aionsecurity.cl/</loc>
+    <loc>https://aionsecurity.cl/</loc>
     <priority>1.0</priority>
   </url>
 
   <url>
-    <loc>https://www.aionsecurity.cl/nosotros</loc>
+    <loc>https://aionsecurity.cl/nosotros</loc>
   </url>
 
   <url>
-    <loc>https://www.aionsecurity.cl/camaras</loc>
+    <loc>https://aionsecurity.cl/camaras</loc>
   </url>
 
   <url>
-    <loc>https://www.aionsecurity.cl/contacto</loc>
+    <loc>https://aionsecurity.cl/contacto</loc>
   </url>
 
 </urlset>
