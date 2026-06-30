@@ -7,10 +7,7 @@ const Inicio = () => {
   return (
     <>
       <Highlights />
-      
-   
       <Camaras />
-     
       <HeroSection />
       <BannerContratacion />
     
